@@ -13,20 +13,17 @@ A Discord bot that sends a welcome message and an image with the background and 
 1. Clone this repository.
     ```
     git clone https://github.com/Xenith-Org/Discord-Welcome-Bot
-    ```
-    
+    ```  
 2. Install the required dependencies 
      ```
      npm install
      ```
-
 3. Configure the bot by adding your bot token and other necessary details to the `config.js` file.
 4. Run the bot using 
     ```
     npm index.js
     ```
     or by using nodemon
-  
     ```
     nodemon index.js
     ```
