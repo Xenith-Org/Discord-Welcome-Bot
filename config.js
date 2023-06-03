@@ -14,7 +14,6 @@ module.exports = {
     Image: {
 
         background: "https://th.bing.com/th/id/R.248b992f15fb255621fa51ee0ca0cecb?rik=K8hIsVFACWQ8%2fw&pid=ImgRaw&r=0", //Put your background image url here
-        titlemessage: "Welcome",    //Put your title message here(title message is the big text in the image)
         titlemessagecolor: "#ffffff",   //Put your title message color here
         description: "Welcome to this server, go read the rules please!",  //Put your description here (description is the small text in the image)
         descriptioncolor: "#ffffff",  //Put your description color here

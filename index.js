@@ -52,11 +52,10 @@ client.on('ready', () => {
 });
 
 client.on("guildMemberAdd", async member => {
-
   const welcome = await new canvafy.WelcomeLeave()
     .setAvatar(member.user.displayAvatarURL({ forceStatic: true, extension: "png" }))
     .setBackground("image", config.Image.background)
-    .setTitle(config.Image.titlemessage, config.Image.titlemessagecolor)
+    .setTitle(member.user.tag, config.Image.titlemessagecolor)
     .setDescription(config.Image.description, config.Image.descriptioncolor)
     .setBorder(config.Image.bordercolor)
     .setAvatarBorder(config.Image.avatarbordercolor)
