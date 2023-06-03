@@ -1,0 +1,32 @@
+{
+  "name": "discord-welcome-bot",
+  "version": "1.0.0",
+  "description": "A discord welcome bot that sends a welcome image and message to a specific channel when a user joins the guild(server). The bot can be customized according to your need.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xenith-Org/Discord-Welcome-Bot.git"
+  },
+  "keywords": [
+    "discord",
+    "welcome",
+    "nodejs",
+    "welcome-bot"
+  ],
+  "author": "iPuppyYT",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Xenith-Org/Discord-Welcome-Bot/issues"
+  },
+  "homepage": "https://github.com/Xenith-Org/Discord-Welcome-Bot#readme",
+  "dependencies": {
+    "@discordjs/rest": "^1.7.1",
+    "canvafy": "^5.0.0",
+    "discord-api-types": "^0.37.43",
+    "discord.js": "^14.11.0",
+    "nodemon": "^2.0.22"
+  }
+}
