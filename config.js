@@ -1,4 +1,4 @@
-const { Presence } = require("discord.js");
+const { ActivityType } = require("discord.js");
 
 module.exports = {
     Botconfig: {
@@ -6,7 +6,7 @@ module.exports = {
         token: "",  //Put your bot token here
         clientid: "", //Put your bot client id here
         guildid: "", //Put your guild(server) id here
-        channelid: "", //Put your channel id here (where the welcome message will be sent)
+        channelid: "", //Put your channel id here ,where the welcome message should be sent
 
     },
 
@@ -25,8 +25,8 @@ module.exports = {
     },
 
     Presence: {
-        status: "online", //Put your bot status here (online, idle, dnd, invisible)
-        activity: "Watching over the server", //Put your bot activity here (playing, streaming, listening, watching)
-        type: "WATCHING", //Put your bot activity type here (PLAYING, STREAMING, LISTENING, WATCHING)
+        status: "dnd", //Put your bot status here (online, idle, dnd, invisible)
+        activity: "your server", //Put your bot activity here (playing, streaming, listening, watching)
+        type: ActivityType.Watching, //Put your bot activity type here (PLAYING, STREAMING, LISTENING, WATCHING)
     },
 }

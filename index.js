@@ -1,4 +1,4 @@
-const EmbedBuilder = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const config = require('./config');
@@ -16,7 +16,7 @@ const rest = new REST({ version: '9' }).setToken(config.Botconfig.token);
 
 client.on('ready', () => {
   console.clear();
-  console.log('\x1b[34m%s\x1b[0m',`Logged in as ${client.user.tag}`);
+  console.log('\x1b[34m%s\x1b[0m', `Logged in as ${client.user.tag}`);
 
   // Register the slash commands
   (async () => {
@@ -25,9 +25,9 @@ client.on('ready', () => {
         Routes.applicationGuildCommands(config.Botconfig.clientid, config.Botconfig.guildid),
         { body: commands },
       );
-      console.log('\x1b[36m%s\x1b[0m','Slash commands registered successfully!');
-      console.log('\x1b[31m%s\x1b[0m',`A discord welcome bot by`);
-      console.log('\x1b[31m%s\x1b[0m',` 
+      console.log('\x1b[36m%s\x1b[0m', 'Slash commands registered successfully!');
+      console.log('\x1b[31m%s\x1b[0m', `A discord welcome bot by`);
+      console.log('\x1b[31m%s\x1b[0m', ` 
       ╔═══╗                 ╔╗  ╔╗╔════╗
       ║╔═╗║                 ║╚╗╔╝║║╔╗╔╗║
     ╔╗║╚═╝║╔╗╔╗╔══╗╔══╗╔╗ ╔╗╚╗╚╝╔╝╚╝║║╚╝
@@ -44,8 +44,10 @@ client.on('ready', () => {
 
 
   // Set the bot's presence
-  client.user.setActivity(config.Presence.activity, { type: config.Presence.type });
-  client.user.setStatus(config.Presence.status);
+  client.user.setPresence({
+    activities: [{ name: config.Presence.activity, type: config.Presence.type }],
+    status: config.Presence.status.toLowerCase(),
+  });
 
 });
 
@@ -62,9 +64,7 @@ client.on("guildMemberAdd", async member => {
     .build();
 
   const guildname = member.guild.name;
-
   const welcomeMessage = `Welcome to ${guildname} <@${member.id}>`;
-
   member.guild.channels.cache.get(config.Botconfig.channelid).send({
     content: welcomeMessage,
     files: [{
@@ -88,6 +88,16 @@ client.on('interactionCreate', (interaction) => {
     const discordJSVersion = require('discord.js').version;
     const nodeVersion = process.version;
     const version = require('./package.json').version;
+
+    const githubbutton = new ButtonBuilder()
+      .setLabel('GitHub Repository')
+      .setURL('https://github.com/Xenith-Org/Discord-Welcome-Bot')
+      .setStyle(ButtonStyle.Link);
+
+    const developerbutton = new ButtonBuilder()
+      .setLabel('Developer')
+      .setURL('https://github.com/ipuppyyt')
+      .setStyle(ButtonStyle.Link);
 
     const pingembed = {
       color: 0x0099ff,
@@ -149,7 +159,8 @@ client.on('interactionCreate', (interaction) => {
         icon_url: interaction.user.avatarURL(),
       },
     };
-    interaction.reply({ embeds: [pingembed] });
+
+    interaction.reply({ embeds: [pingembed], components: [new ActionRowBuilder().addComponents(githubbutton).addComponents(developerbutton) ] });
 
   }
 });
@@ -159,7 +170,7 @@ client.on('interactionCreate', (interaction) => {
 
 //login to the bot
 if (config.token == "") {
-  console.log(`\x1b[31m%s\x1b[0m`,"Please enter a bot token in the config.json file");
+  console.log(`\x1b[31m%s\x1b[0m`, "Please enter a bot token in the config.json file");
   process.exit(1);
 }
 else {
